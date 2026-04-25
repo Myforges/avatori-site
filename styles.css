@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap');
-
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Outfit', var(--font-sans);
-  
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", Roboto, system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", Roboto, system-ui, sans-serif;
+
   --bg: #ffffff;
   --fg: #111111;
   --muted: #666666;
@@ -11,10 +9,29 @@
   --accent-fg: #ffffff;
   --border: #eeeeee;
   --card-bg: #f9f9f9;
-  
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --how-bg: #fbfbfb;
+  --hero-gradient: linear-gradient(135deg, #000 0%, #444 100%);
+
   --radius: 12px;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f5f5f5;
+    --muted: #9ca3af;
+    --accent: #ffffff;
+    --accent-fg: #0a0a0a;
+    --border: #1f2937;
+    --card-bg: #141414;
+    --header-bg: rgba(10, 10, 10, 0.8);
+    --how-bg: #111111;
+    --hero-gradient: linear-gradient(135deg, #ffffff 0%, #aaaaaa 100%);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
 }
 
 * {
@@ -50,8 +67,9 @@ header.site {
   padding: 1.5rem 2rem;
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 100;
   border-bottom: 1px solid var(--border);
 }
@@ -98,9 +116,11 @@ section {
   font-size: 4rem;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #000 0%, #444 100%);
+  background: var(--hero-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .tagline {
@@ -179,7 +199,7 @@ section {
 }
 
 .how-it-works {
-  background: #fbfbfb;
+  background: var(--how-bg);
   padding: 4rem;
   border-radius: 2rem;
 }
